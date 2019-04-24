@@ -1,0 +1,43 @@
+{% extends "layout" %}
+{% block content %}
+
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">The Hashtag Rater</h4>
+      </div>
+      <div class="card-body">
+        <p>This application allows users to search a perticular Hashtag on twitter and determine the most popular tweets containing the searched hashtag.</p>
+        <p>A login is required for the application to keep track of what searches you have made.</p>
+        <p><a class="btn btn-lg btn-primary" href="/api/login" role="button">Login Now</a></p>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">How to Use</h4>
+      </div>
+       <div class="card-body">
+        <p>Using the application is simple. Firstly, enter the HashTag you want to search and then enter the amount of results you want.
+          <br><br>
+          You can also retrieve your search history and display the corresponding graphs</p>
+        <p><a class="btn btn-lg btn-primary" href="/api/hashtag" role="button">Start Searching</a></p>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Search History</h4>
+      </div>
+      <div class="card-body">
+        <p>The results of your searches will be displayed by a table for easy viewing</p>
+        <p><a class="btn btn-lg btn-primary" href="/api/search_history" role="button">Browse Results</a></p>
+        <p>And if you enjoy the results, leave a positive review</p>
+        <p><a class="btn btn-lg btn-primary" href="/api/comments" role="button">Make Review</a></p>
+      </div>
+    </div>
+  </div>
+
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+
+{% endblock content %}

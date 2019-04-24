@@ -1,0 +1,65 @@
+{% extends "layout" %}
+{% block content %}
+
+<a href="#"  class="btn btn-outline-info" onclick="history.go(-1)">Return to Previous Page</a>
+
+<div id="container" style="height: 400px"></div>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<script>
+
+        var labels1 = [{% for item in labels %}
+                     "{{item}}",
+                    {% endfor %}]
+
+        var values1 = [{% for item in values %}
+                     {{item}},
+                    {% endfor %}]
+
+            Highcharts.chart('container', {
+    chart: {
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+        }
+    },
+    title: {
+        text: '{{title}}'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            depth: 35,
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}'
+            }
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'Browser share',
+        data: [
+            [labels1[0], values1[0]],
+            [labels1[1], values1[1]],
+            [labels1[2], values1[2]],
+            [labels1[3], values1[3]],
+            [labels1[4], values1[4]],
+            [labels1[5], values1[5]],
+            [labels1[6], values1[6]]
+        ]
+    }]
+});
+        </script>
+</main>
+{% endblock content %}

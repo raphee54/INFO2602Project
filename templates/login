@@ -1,0 +1,36 @@
+{% extends "layout" %}
+{% block content %}
+
+<section class="jumbotron text-center" style="width: 80%; margin: 0 auto;">
+    <div class="container">
+        <div class="row" >
+            <div class="col-lg">
+                    <h4>You haven't logged in yet</h4>
+                    <h4>Login Below:</h4>
+            </br>
+                <form method="POST" action="/api/validate">
+                    <div class="form-group">
+                      <label for="email">Username : </label>
+                      <input type="text" name="uname" class="form-control" id="uname">
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Password : </label>
+                      <input type="password" name="passw" class="form-control" id="passw">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>   
+        </div>
+    </div>
+</section>
+</br>
+<section class="jumbotron text-center" style="width: 80%; margin: 0 auto;">
+    <p>Don't yet have an account?</p>
+    <form action="/api/register" method="GET">
+        <button class="btn btn-outline-primary" type="submit">Register</button>
+    </form>
+</section>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+{% endblock content %}

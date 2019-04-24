@@ -1,0 +1,27 @@
+{% extends "layout" %}
+{% block content %}
+<div class="col">
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+        <th>Search Tag</th> <th></th> <th></th>
+        </thead>
+        <tbody>
+        {% for user in users|sort(attribute='requestid')%}
+        <tr>
+            <td>{{user.request}}</td>
+            <td>
+                <form action="/api/tweets_request/{{user.requestid}}" method="POST">  <button class="btn btn-outline-primary" type="submit">Get Tweet Listing</button>  </form>
+
+            </td>
+            <td><a href="">  </a>
+                <form action="/api/tweets_request_del/{{user.requestid}}" method="POST">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    <button class="btn btn-outline-primary" type="submit">Delete Entry</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

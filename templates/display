@@ -1,0 +1,29 @@
+{% extends "layout" %}
+{% block content %}
+<div class="col">
+    <div class="nav navbar-nav" class="nav navbar-nav navbar-right">
+        <ul class="list-inline">
+            <li><a class="btn btn-outline-info" href="/api/hashtag">Return to the previous page</a></li>
+            <li><a class="btn btn-outline-info" href="/api/s_analyis">Generate Sentimental Analysis</a></li>
+        </ul>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+        <th>Text</th> <th>User Details</th> <th>Location</th> <th>Retweet Count</th> <th>Favourite Count</th>  <th>Date Created</th>
+        </thead>
+        <tbody>
+        {% for tweet in tweets|sort(attribute='favorite_count', reverse = True)|sort(attribute='retweet_count', reverse = True)%}
+        <tr>
+            <td>{{tweet.text}}</td>
+            <td><b>Name:</b> {{tweet.user.name}} <br> <b>Screen Name:</b> {{tweet.user.screen_name}}</td>
+            <td>{{tweet.user.location}}</td>
+            <td>{{tweet.retweet_count}}</td>
+            <td>{{tweet.favorite_count}}</td>
+            <td>{{tweet.created_at[:20]}} {{tweet.created_at[26:]}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

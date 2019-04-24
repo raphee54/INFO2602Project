@@ -1,0 +1,25 @@
+{% extends "layout" %}
+{% block content %}
+<div class="col">
+    <a href="/api/search_history"> <button class="btn btn-outline-info">Return to the previous page</button> </a>
+    <a href="/api/charts/barchart/{{id}}"> <button class="btn btn-outline-info" >Generate Charts</button> </a>
+    <br><br>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+        <th>Tweet Text</th> <th>Sender's Username</th> <th>Retweet Count</th> <th>Favourite Count</th> <th>Location</th> <th>Date Created</th>
+        </thead>
+        <tbody>
+            {% for tweet in tweets %}
+            <tr>
+                <td>{{tweet.text}}</td>
+                <td>{{tweet.name}}</td>
+                <td>{{tweet.retweet_count}}</td>
+                <td>{{tweet.favorite_count}}</td>
+                <td>{{tweet.location}}</td>
+                <td>{{tweet.created_at}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

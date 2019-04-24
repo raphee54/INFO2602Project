@@ -1,0 +1,27 @@
+{% extends "layout" %}
+{% block content %}
+
+<section class="jumbotron text-center" style="width: 80%; margin: 0 auto;">
+        <div class="container">
+            <h4 class="mb-3">Search for a particular HashTag</h4>
+            <form method="POST" action="/api/hashtag_search">
+                <div class="form-group">
+                    <label for="hashtag_name">Enter HashTag</label>
+                    <input type="text" class="form-control" id="hashtag_name" name="hashtag_name" aria-describedby="formHelp" placeholder="Enter HashTag">
+                    <small id="formHelp" class="form-text text-muted">Enter the tag of the event or other thing you want to search</small>
+                </div>
+                <div class="form-group">
+                    <label for="num_vals">Enter Number of Tweets per day</label>
+                    <input type="number" class="form-control" id="num_vals" name="num_vals" aria-describedby="formHelp1" placeholder="Enter number of tweets">
+                    <small id="formHelp1" class="form-text text-muted">Enter the number of tweets you want from each day of the search</small>
+                </div>
+                <div class="form-group">
+                    <label for="time_period">Please enter time period (Starting from):</label>
+                    <input type="date" class="form-control" id="time_period" name="time_period" aria-describedby="formHelp1" placeholder="Enter number of tweets">
+                    <small id="formHelp2" class="form-text text-muted">Enter the starting date for the search (Will search for tweets from that day to the present day)</small>
+                </div>
+                <input type="submit" value="Enter">
+            </form>
+        </div>
+    </section>
+{% endblock content %}

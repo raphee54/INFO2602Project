@@ -1,0 +1,47 @@
+{% extends "layout" %}
+{% block content %}
+
+<section class="jumbotron text-center" style="width: 80%; margin: 0 auto;">
+    <div class="container">
+        <div class="row" >
+            <div class="col-lg">
+                <h3>How would you rate this site?</h3>
+                <br><br>
+                <form action="/api/review" method="POST">
+                    <table>
+                        <tr>
+                            <td style="vertical-align:top;">Please leave your commments: </td>
+                            <td><textarea cols="30" rows="4" required name="comments"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Your rating:</td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td><input type="radio" name="rate" value="0" required></td>
+                                        <td><input type="radio" name="rate" value="1" ></td>
+                                        <td><input type="radio" name="rate" value="2"></td>
+                                        <td><input type="radio" name="rate" value="3"></td>
+                                        <td><input type="radio" name="rate" value="4"></td>
+                                        <td><input type="radio" name="rate" value="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <td><input type="submit"></td>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

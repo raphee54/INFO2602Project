@@ -1,0 +1,13 @@
+{% extends "layout" %}
+{% block content %}
+        <section class="jumbotron text-center" style="width: 80%; margin: 0 auto;">
+    <div class="container">
+        <div class="row" >
+            <div class="col-lg">
+                   <p> Your Review: {{ reviewData }}</p>
+                   <p><a class="btn btn-outline-info" href="/api">Return to Home Page</a></p>
+            </div>   
+        </div>
+    </div>
+</section>
+{% endblock content %}

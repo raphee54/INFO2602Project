@@ -1,0 +1,82 @@
+{% extends "layout" %}
+{% block content %}
+    <main role="main" class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <p class="navbar-brand" >Charts</p>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-secondary" href="/api/charts/barchart/{{id}}">Retweets/Favourite Chart<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-secondary" href="/api/charts/barchart2/{{id}}">Tweet Popularity Chart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-secondary" href="/api/charts/linechart/{{id}}">Popularity of Hashtag Overtime</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script>
+            Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Favourites and Retweets'
+        },
+        subtitle: {
+            text: 'Source:twitter api / Template chart by:HighCharts'
+        },
+        xAxis: {
+            categories: [{% for item in twitterNames %}
+                 "{{item}}",
+                {% endfor %}],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'amount'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Favorites',
+            data: [{% for item in favorite_count1 %}
+                 {{item}},
+                {% endfor %}]
+
+        }, {
+            name: 'Retweets',
+            data: [{% for item in retweet_count1 %}
+                 {{item}},
+                {% endfor %}]
+
+        }]
+    });
+        </script>
+    </main>
+{% endblock content %}
